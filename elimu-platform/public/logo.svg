@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40" fill="none">
+  <!-- Shield/book mark -->
+  <rect x="2" y="4" width="32" height="32" rx="8" fill="#D97706"/>
+  <path d="M18 10 L28 16 L18 22 L8 16 Z" fill="white" opacity="0.9"/>
+  <path d="M12 18 L12 26 C12 26 15 29 18 29 C21 29 24 26 24 26 L24 18" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <circle cx="18" cy="15" r="2" fill="#D97706"/>
+  <!-- Text -->
+  <text x="42" y="18" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="700" fill="#1C1917">Elimu</text>
+  <text x="42" y="33" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="500" fill="#D97706">Africa</text>
+</svg>

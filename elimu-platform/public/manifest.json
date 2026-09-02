@@ -1,0 +1,16 @@
+{
+  "name": "Elimu Africa",
+  "short_name": "Elimu",
+  "description": "AI-powered interactive learning platform for everyone",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFBEB",
+  "theme_color": "#D97706",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

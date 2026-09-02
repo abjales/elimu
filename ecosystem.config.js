@@ -1,0 +1,40 @@
+module.exports = {
+  apps: [
+    {
+      name: 'elimu-platform',
+      script: './node_modules/next/dist/bin/next',
+      args: 'start',
+      cwd: '/home/abjales/projects/elimu/elimu-platform',
+      instances: 5,
+      exec_mode: 'cluster',
+      autorestart: true,
+      watch: false,
+      max_memory_restart: '500M',
+      env: {
+        NODE_ENV: 'production',
+        PORT: 3000,
+      },
+      error_file: '/var/log/elimu/platform-error.log',
+      out_file: '/var/log/elimu/platform-out.log',
+      log_date_format: 'YYYY-MM-DD HH:mm:ss Z',
+    },
+    {
+      name: 'openmaic',
+      script: './node_modules/next/dist/bin/next',
+      args: 'start',
+      cwd: '/home/abjales/projects/elimu/openmaic',
+      instances: 2,
+      exec_mode: 'cluster',
+      autorestart: true,
+      watch: false,
+      max_memory_restart: '400M',
+      env: {
+        NODE_ENV: 'production',
+        PORT: 3001,
+      },
+      error_file: '/var/log/elimu/openmaic-error.log',
+      out_file: '/var/log/elimu/openmaic-out.log',
+      log_date_format: 'YYYY-MM-DD HH:mm:ss Z',
+    },
+  ],
+};
