@@ -50,6 +50,7 @@ export async function POST(request: Request) {
           await db
             .update(users)
             .set({
+              plan: 'pro',
               proSince: new Date(),
             })
             .where(eq(users.id, userId));
@@ -103,7 +104,7 @@ export async function POST(request: Request) {
         if (sub) {
           await db
             .update(users)
-            .set({ proSince: null })
+            .set({ plan: 'free', proSince: null })
             .where(eq(users.id, sub.userId));
         }
         break;

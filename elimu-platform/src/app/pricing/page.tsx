@@ -4,6 +4,13 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Check, Sparkles } from 'lucide-react';
+import { MpesaCheckout } from '@/components/mpesa-checkout';
+
+// Pro prices in KES, displayed client-side. These are public (they're the
+// advertised price) and must match the server-side MPESA_PRO_*_AMOUNT_KSHS
+// values that the actual charge is validated against.
+const PRO_MONTHLY = process.env.NEXT_PUBLIC_MPESA_PRO_MONTHLY_AMOUNT_KSHS || '500';
+const PRO_ANNUAL = process.env.NEXT_PUBLIC_MPESA_PRO_ANNUAL_AMOUNT_KSHS || '5000';
 
 const plans = [
   {
@@ -24,7 +31,7 @@ const plans = [
   },
   {
     name: 'Pro',
-    price: '$19',
+    price: `KES ${PRO_MONTHLY}`,
     period: '/month',
     description: 'Unlock the full power of AI-powered learning',
     features: [
@@ -94,16 +101,16 @@ export default function PricingPage() {
                 ))}
               </ul>
 
-              <Button
-                className={`w-full rounded-full ${
-                  plan.highlighted
-                    ? 'bg-[#e8b84b] hover:bg-[#d4a43e] text-[#111310]'
-                    : 'bg-[#111310] hover:bg-[#111310]/90 text-white'
-                }`}
-                asChild
-              >
-                <Link href={plan.ctaLink}>{plan.cta}</Link>
-              </Button>
+              {plan.highlighted ? (
+                <MpesaCheckout />
+              ) : (
+                <Button
+                  className="w-full rounded-full bg-[#111310] hover:bg-[#111310]/90 text-white"
+                  asChild
+                >
+                  <Link href={plan.ctaLink}>{plan.cta}</Link>
+                </Button>
+              )}
             </CardContent>
           </Card>
         ))}

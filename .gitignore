@@ -39,6 +39,9 @@ yarn-error.log*
 /data
 /public/vendor/maic-importer
 
+# ===== Local backups (DB dumps) =====
+/backups/
+
 # ===== Testing =====
 coverage/
 test-results/

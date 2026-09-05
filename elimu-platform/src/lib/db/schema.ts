@@ -21,6 +21,8 @@ export const courseStatusEnum = pgEnum('course_status', ['draft', 'published', '
 export const lessonTypeEnum = pgEnum('lesson_type', ['video', 'document', 'ai-classroom']);
 export const subscriptionStatusEnum = pgEnum('subscription_status', ['active', 'canceled', 'past_due', 'trialing']);
 export const classroomStatusEnum = pgEnum('classroom_status', ['generating', 'ready', 'failed']);
+export const paymentProviderEnum = pgEnum('payment_provider', ['mpesa', 'stripe']);
+export const paymentStatusEnum = pgEnum('payment_status', ['pending', 'completed', 'failed', 'canceled']);
 
 // Users
 export const users = pgTable('users', {
@@ -172,6 +174,25 @@ export const subscriptions = pgTable('subscriptions', {
   createdAt: timestamp('created_at').defaultNow().notNull(),
 });
 
+// Payments (M-Pesa / Stripe transactions)
+export const payments = pgTable('payments', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  userId: uuid('user_id').references(() => users.id, { onDelete: 'cascade' }).notNull(),
+  provider: paymentProviderEnum('provider').notNull(),
+  plan: varchar('plan', { length: 50 }).notNull(), // 'monthly' or 'annual'
+  amount: integer('amount').notNull(), // integer amount (KES for M-Pesa, cents for Stripe)
+  currency: varchar('currency', { length: 3 }).default('KES').notNull(),
+  phone: varchar('phone', { length: 20 }),
+  merchantRequestId: varchar('merchant_request_id', { length: 100 }),
+  checkoutRequestId: varchar('checkout_request_id', { length: 100 }),
+  mpesaReceiptNumber: varchar('mpesa_receipt_number', { length: 100 }),
+  status: paymentStatusEnum('status').default('pending').notNull(),
+  rawCallback: jsonb('raw_callback'),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+  completedAt: timestamp('completed_at'),
+});
+
 // === Relations ===
 
 export const usersRelations = relations(users, ({ many }) => ({
@@ -179,6 +200,7 @@ export const usersRelations = relations(users, ({ many }) => ({
   classrooms: many(aiClassrooms),
   reviews: many(reviews),
   subscriptions: many(subscriptions),
+  payments: many(payments),
 }));
 
 export const categoriesRelations = relations(categories, ({ many }) => ({
@@ -246,6 +268,13 @@ export const reviewsRelations = relations(reviews, ({ one }) => ({
 export const subscriptionsRelations = relations(subscriptions, ({ one }) => ({
   user: one(users, {
     fields: [subscriptions.userId],
+    references: [users.id],
+  }),
+}));
+
+export const paymentsRelations = relations(payments, ({ one }) => ({
+  user: one(users, {
+    fields: [payments.userId],
     references: [users.id],
   }),
 }));
