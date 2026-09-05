@@ -103,8 +103,8 @@ export function normalizePhone(input: string): string {
 
 /** Validate that a normalized phone looks like a Kenyan mobile number. */
 export function isValidKenyanPhone(normalized: string): boolean {
-  // 254 + 9 digits (7XX/1XX ranges).
-  return /^254\d{9}$/.test(normalized);
+  // 254 + a mobile prefix (7XX legacy or 1XX new ranges) + 8 digits.
+  return /^254[17]\d{8}$/.test(normalized);
 }
 
 /** Daraja timestamp format: YYYYMMDDHHmmss in East Africa Time (UTC+3). */
