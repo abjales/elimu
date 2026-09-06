@@ -1,31 +1,26 @@
 #!/bin/bash
 # ELIMU Platform - Deployment Script
-# Run this on your Contabo VPS after initial setup
+# Run on the production VPS to pull, build, migrate, and reload in place.
+# This is a single monorepo: elimu-platform/ + openmaic/ live under APP_DIR.
 
 set -e
 
-APP_DIR="/var/www/elimu"
+APP_DIR="/home/abjales/projects/elimu"
 LOG_DIR="/var/log/elimu"
 
 echo "=== ELIMU Deployment ==="
 echo ""
 
 # Create log directory
-sudo mkdir -p $LOG_DIR
-sudo chown $USER:$USER $LOG_DIR
+sudo mkdir -p "$LOG_DIR"
+sudo chown "$USER":"$USER" "$LOG_DIR"
 
-# Navigate to app directory
-cd $APP_DIR
+# Navigate to repo root (single monorepo)
+cd "$APP_DIR"
 
-# Pull latest changes
+# Pull latest changes (one repo, one pull)
 echo "1. Pulling latest changes..."
-cd elimu-platform
 git pull origin main
-cd ..
-
-cd openmaic
-git pull origin main
-cd ..
 
 # Install dependencies
 echo "2. Installing dependencies..."
@@ -47,7 +42,7 @@ cd openmaic
 pnpm build
 cd ..
 
-# Run database migrations
+# Run database migrations (drizzle-kit migrate reads .env.local via drizzle.config.ts)
 echo "5. Running database migrations..."
 cd elimu-platform
 pnpm db:migrate
