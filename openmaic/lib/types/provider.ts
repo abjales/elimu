@@ -19,6 +19,7 @@ export type BuiltInProviderId =
   | 'doubao'
   | 'openrouter'
   | 'grok'
+  | 'groq'
   | 'tencent-hunyuan'
   | 'xiaomi'
   | 'lemonade'

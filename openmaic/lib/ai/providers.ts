@@ -1016,6 +1016,45 @@ export const PROVIDERS: Record<ProviderId, ProviderConfig> = {
     ],
   },
 
+  groq: {
+    id: 'groq',
+    name: 'Groq',
+    type: 'openai',
+    defaultBaseUrl: 'https://api.groq.com/openai/v1',
+    requiresApiKey: true,
+    icon: '/logos/groq.svg',
+    models: [
+      {
+        id: 'qwen/qwen3.8-27b',
+        name: 'Qwen 3.8 27B',
+        contextWindow: 131072,
+        outputWindow: 32768,
+        capabilities: { streaming: true, tools: true, vision: false },
+      },
+      {
+        id: 'qwen/qwen3.6-27b',
+        name: 'Qwen 3.6 27B',
+        contextWindow: 131072,
+        outputWindow: 32768,
+        capabilities: { streaming: true, tools: true, vision: false },
+      },
+      {
+        id: 'groq/compound',
+        name: 'Groq Compound',
+        contextWindow: 131072,
+        outputWindow: 32768,
+        capabilities: { streaming: true, tools: true, vision: false },
+      },
+      {
+        id: 'allam-2-7b',
+        name: 'Allam 2 7B',
+        contextWindow: 131072,
+        outputWindow: 8192,
+        capabilities: { streaming: true, tools: true, vision: false },
+      },
+    ],
+  },
+
   grok: {
     id: 'grok',
     name: 'Grok',
