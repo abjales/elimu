@@ -27,11 +27,10 @@ import {
   ChevronRight,
 } from 'lucide-react';
 import {
+  studentClassroom,
   aiRobot,
   learningPaths,
   categoryThumbnail,
-  heroVideo,
-  heroVideoPoster,
 } from '@/lib/imagery';
 
 const features = [
@@ -65,10 +64,19 @@ export default async function HomePage() {
       {/* ═══════════════════════════════════════════════════════════
           HERO — Dark green full-width, centered layout
           ═══════════════════════════════════════════════════════════ */}
-      <section className="relative bg-[#0d3d22] text-white overflow-hidden">
+      <section className="relative text-white overflow-hidden">
+        {/* Full-bleed background — real African student studying */}
+        <img
+          src={studentClassroom}
+          alt=""
+          aria-hidden
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        {/* Dark overlay for legibility */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0d3d22]/95 via-[#0d3d22]/85 to-[#0d3d22]/95" />
         {/* Decorative radial glow */}
-        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 30% 40%, #e8b84b 0%, transparent 50%)' }} />
-        <div className="container mx-auto px-4 sm:px-6 pt-16 pb-20 md:pt-24 md:pb-28 relative">
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 30% 40%, #e8b84b 0%, transparent 50%)' }} />
+        <div className="container relative mx-auto px-4 sm:px-6 pt-20 pb-24 md:pt-32 md:pb-32">
           <div className="max-w-4xl mx-auto text-center">
             {/* Badge pill */}
             <div className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 px-5 py-2 text-sm font-medium text-white/90 mb-8 animate-fade-in">
@@ -104,25 +112,6 @@ export default async function HomePage() {
                   Browse Courses
                 </Link>
               </Button>
-            </div>
-          </div>
-
-          {/* Hero video — African students studying with laptops and phones */}
-          <div className="max-w-4xl mx-auto mb-12">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10 bg-[#0d3d22]">
-              <video
-                className="w-full aspect-video object-cover"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                poster={heroVideoPoster}
-                aria-label="African students studying with laptops and phones"
-              >
-                <source src={heroVideo} type="video/mp4" />
-              </video>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
             </div>
           </div>
 
