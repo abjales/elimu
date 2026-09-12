@@ -168,7 +168,7 @@ export const subscriptions = pgTable('subscriptions', {
   id: uuid('id').defaultRandom().primaryKey(),
   userId: uuid('user_id').references(() => users.id, { onDelete: 'cascade' }).notNull(),
   stripeSubId: varchar('stripe_sub_id', { length: 255 }).notNull(),
-  plan: varchar('plan', { length: 50 }).notNull(), // 'monthly' or 'annual'
+  plan: varchar('plan', { length: 50 }).notNull(), // 'monthly' | 'annual' | 'lifetime'
   status: subscriptionStatusEnum('status').default('active'),
   currentPeriodEnd: timestamp('current_period_end'),
   createdAt: timestamp('created_at').defaultNow().notNull(),
@@ -179,7 +179,7 @@ export const payments = pgTable('payments', {
   id: uuid('id').defaultRandom().primaryKey(),
   userId: uuid('user_id').references(() => users.id, { onDelete: 'cascade' }).notNull(),
   provider: paymentProviderEnum('provider').notNull(),
-  plan: varchar('plan', { length: 50 }).notNull(), // 'monthly' or 'annual'
+  plan: varchar('plan', { length: 50 }).notNull(), // 'monthly' | 'annual' | 'lifetime'
   amount: integer('amount').notNull(), // integer amount (KES for M-Pesa, cents for Stripe)
   currency: varchar('currency', { length: 3 }).default('KES').notNull(),
   phone: varchar('phone', { length: 20 }),

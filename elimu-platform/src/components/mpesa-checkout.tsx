@@ -6,16 +6,15 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Loader2, Smartphone, CheckCircle2, XCircle } from 'lucide-react';
+import { Loader2, Smartphone, CheckCircle2 } from 'lucide-react';
 
-type Plan = 'monthly' | 'annual';
+export type Plan = 'monthly' | 'annual' | 'lifetime';
 
 type Step = 'form' | 'pending' | 'success' | 'failed';
 
-export function MpesaCheckout() {
+export function MpesaCheckout({ plan }: { plan: Plan }) {
   const { data: session } = useSession();
   const router = useRouter();
-  const [plan, setPlan] = useState<Plan>('monthly');
   const [phone, setPhone] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -112,31 +111,14 @@ export function MpesaCheckout() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
-      <div className="flex rounded-full border border-border overflow-hidden">
-        {(['monthly', 'annual'] as Plan[]).map((p) => (
-          <button
-            key={p}
-            type="button"
-            onClick={() => setPlan(p)}
-            className={`flex-1 px-3 py-2 text-sm font-medium capitalize transition-colors ${
-              plan === p
-                ? 'bg-[#111310] text-white'
-                : 'bg-transparent text-[#7a7468] hover:bg-stone-100'
-            }`}
-          >
-            {p}
-          </button>
-        ))}
-      </div>
-
       <div className="space-y-1.5">
-        <Label htmlFor="mpesa-phone" className="text-stone-700">
+        <Label htmlFor={`mpesa-phone-${plan}`} className="text-stone-700">
           M-Pesa phone number
         </Label>
         <div className="relative">
           <Smartphone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#7a7468]" />
           <Input
-            id="mpesa-phone"
+            id={`mpesa-phone-${plan}`}
             type="tel"
             inputMode="numeric"
             placeholder="07XXXXXXXX"

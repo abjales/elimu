@@ -14,6 +14,7 @@
  *   MPESA_CALLBACK_URL             Public HTTPS callback URL (must be reachable by Safaricom)
  *   MPESA_PRO_MONTHLY_AMOUNT_KSHS  Pro monthly price in KES (integer)
  *   MPESA_PRO_ANNUAL_AMOUNT_KSHS   Pro annual price in KES (integer)
+ *   MPESA_PRO_LIFETIME_AMOUNT_KSHS Pro lifetime price in KES (integer)
  */
 
 const BASE_URLS: Record<'sandbox' | 'production', string> = {
@@ -22,7 +23,7 @@ const BASE_URLS: Record<'sandbox' | 'production', string> = {
 };
 
 type Environment = 'sandbox' | 'production';
-type Plan = 'monthly' | 'annual';
+type Plan = 'monthly' | 'annual' | 'lifetime';
 
 export interface MpesaConfig {
   environment: Environment;
@@ -131,7 +132,9 @@ export function proAmountForPlan(plan: Plan): number {
   const raw =
     plan === 'annual'
       ? process.env.MPESA_PRO_ANNUAL_AMOUNT_KSHS
-      : process.env.MPESA_PRO_MONTHLY_AMOUNT_KSHS;
+      : plan === 'lifetime'
+        ? process.env.MPESA_PRO_LIFETIME_AMOUNT_KSHS
+        : process.env.MPESA_PRO_MONTHLY_AMOUNT_KSHS;
   const amount = parseInt(raw || '0', 10);
   if (!Number.isFinite(amount) || amount <= 0) {
     throw new Error(

@@ -14,7 +14,7 @@ import {
 
 const bodySchema = z.object({
   phone: z.string().min(1, 'Phone number required'),
-  plan: z.enum(['monthly', 'annual']),
+  plan: z.enum(['monthly', 'annual', 'lifetime']),
 });
 
 export async function POST(request: Request) {
