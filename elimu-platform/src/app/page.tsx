@@ -192,9 +192,29 @@ export default async function HomePage() {
               <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 font-[family-name:var(--font-playfair)]">
                 Turn Any Topic Into a Live AI Lesson
               </h2>
-              <p className="text-white/60 text-base md:text-lg mb-8 leading-relaxed max-w-lg">
-                AI Classrooms bring any topic to life — no pre-recorded videos, no outdated content. Every lesson is generated in real-time by an AI tutor that adapts to the learner&apos;s pace and style.
-              </p>
+              <ol className="space-y-6 mb-8 max-w-lg">
+                <li className="flex gap-4">
+                  <span className="flex-shrink-0 h-9 w-9 rounded-full bg-[#e8b84b]/15 border border-[#e8b84b]/30 text-[#e8b84b] flex items-center justify-center text-sm font-semibold font-[family-name:var(--font-dm-mono)]">1</span>
+                  <div>
+                    <h3 className="font-semibold text-white mb-1">Describe or upload</h3>
+                    <p className="text-white/60 text-sm leading-relaxed">Drop a PDF, textbook chapter, or just a sentence. Optional: web search toggle.</p>
+                  </div>
+                </li>
+                <li className="flex gap-4">
+                  <span className="flex-shrink-0 h-9 w-9 rounded-full bg-[#e8b84b]/15 border border-[#e8b84b]/30 text-[#e8b84b] flex items-center justify-center text-sm font-semibold font-[family-name:var(--font-dm-mono)]">2</span>
+                  <div>
+                    <h3 className="font-semibold text-white mb-1">AI composes the lesson</h3>
+                    <p className="text-white/60 text-sm leading-relaxed">One pass turns your brief into a full lesson, including outlines, slides, quizzes, interactive simulations, and the classroom dialogue.</p>
+                  </div>
+                </li>
+                <li className="flex gap-4">
+                  <span className="flex-shrink-0 h-9 w-9 rounded-full bg-[#e8b84b]/15 border border-[#e8b84b]/30 text-[#e8b84b] flex items-center justify-center text-sm font-semibold font-[family-name:var(--font-dm-mono)]">3</span>
+                  <div>
+                    <h3 className="font-semibold text-white mb-1">Attend the multi-agent classroom</h3>
+                    <p className="text-white/60 text-sm leading-relaxed">AI teachers and classmates play their roles. Raise your hand, answer quizzes, debate with peers. Export PPTX/HTML anytime.</p>
+                  </div>
+                </li>
+              </ol>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" asChild className="bg-[#e8b84b] hover:bg-[#d4a43e] text-[#111310] font-semibold px-8 rounded-full shadow-lg">
                   <Link href="/pricing">
