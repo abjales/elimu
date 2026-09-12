@@ -27,13 +27,11 @@ import {
   ChevronRight,
 } from 'lucide-react';
 import {
-  studentsCollaborating,
-  portraitConfident,
-  portraitYoung,
   aiRobot,
-  codingLaptop,
   learningPaths,
   categoryThumbnail,
+  heroVideo,
+  heroVideoPoster,
 } from '@/lib/imagery';
 
 const features = [
@@ -85,7 +83,7 @@ export default async function HomePage() {
 
             {/* Subheadline */}
             <p className="text-lg md:text-xl text-white/70 mb-4 max-w-3xl mx-auto leading-relaxed">
-              access world-class education using only a phone or a laptop.
+              Access world-class education using only a phone or a laptop.
             </p>
 
             {/* Description */}
@@ -109,25 +107,22 @@ export default async function HomePage() {
             </div>
           </div>
 
-          {/* Hero imagery — real photo + afro-futurist strip */}
+          {/* Hero video — African students studying with laptops and phones */}
           <div className="max-w-4xl mx-auto mb-12">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10">
-              <img
-                src={studentsCollaborating}
-                alt="African students learning together with technology"
-                className="w-full aspect-[2/1] object-cover"
-              />
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10 bg-[#0d3d22]">
+              <video
+                className="w-full aspect-video object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster={heroVideoPoster}
+                aria-label="African students studying with laptops and phones"
+              >
+                <source src={heroVideo} type="video/mp4" />
+              </video>
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-            </div>
-            <div className="grid grid-cols-4 gap-2.5 sm:gap-3 -mt-6 relative px-3 sm:px-8">
-              {[portraitConfident, aiRobot, portraitYoung, codingLaptop].map((src, i) => (
-                <div
-                  key={src}
-                  className={`rounded-xl overflow-hidden shadow-lg ring-2 ring-[#0d3d22] bg-white/10 ${i % 2 === 1 ? 'translate-y-2' : ''}`}
-                >
-                  <img src={src} alt="African learners and AI" className="w-full aspect-[4/5] object-cover" />
-                </div>
-              ))}
             </div>
           </div>
 

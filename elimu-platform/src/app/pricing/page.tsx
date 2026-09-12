@@ -15,7 +15,7 @@ const PRO_ANNUAL = process.env.NEXT_PUBLIC_MPESA_PRO_ANNUAL_AMOUNT_KSHS || '5000
 const plans = [
   {
     name: 'Free',
-    price: '$0',
+    price: 'Free',
     period: 'forever',
     description: 'Perfect for getting started with AI learning',
     features: [
@@ -43,7 +43,7 @@ const plans = [
       'Certificate of completion',
       'Cancel anytime',
     ],
-    cta: 'Start Pro Trial',
+    cta: 'Upgrade to Pro',
     ctaLink: '/register?plan=pro',
     highlighted: true,
   },
@@ -130,15 +130,16 @@ export default function PricingPage() {
           <div className="border-b border-border pb-6">
             <h3 className="font-semibold mb-2 text-[#111310]">What payment methods do you accept?</h3>
             <p className="text-[#7a7468] text-sm">
-              We accept all major credit cards, debit cards, and mobile money through our secure
-              payment partner.
+              We accept payment via M-Pesa (Lipa na M-Pesa) through Safaricom&apos;s secure Daraja
+              API.
             </p>
           </div>
           <div className="border-b border-border pb-6">
             <h3 className="font-semibold mb-2 text-[#111310]">Is there a free trial?</h3>
             <p className="text-[#7a7468] text-sm">
-              The Free plan gives you permanent access to basic features. Pro plan includes
-              a 7-day free trial so you can explore all features risk-free.
+              The Free plan gives you permanent access to basic features so you can explore the
+              platform before upgrading to Pro. There is no separate trial — you can upgrade or
+              cancel anytime.
             </p>
           </div>
           <div className="pb-2">

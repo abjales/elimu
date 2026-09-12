@@ -25,6 +25,14 @@ export const studentsGraduating = img('photo-1523240795612-9a054b0db644', 1200, 
 export const graduatesCaps = img('photo-1571260899304-425eee4c7efc', 1200, 800);
 export const kidsClassroom = img('photo-1427504494785-3a9ca7044f45', 1200, 800);
 
+/* ────────────────────────────────────────────────
+   Hero video (free stock, Coverr license — no attribution required)
+   African students studying outdoors with laptops & phones.
+   ──────────────────────────────────────────────── */
+export const heroVideo =
+  'https://cdn.coverr.co/videos/coverr-students-studying-outdoors-6203/720p.mp4';
+export const heroVideoPoster = studentsCollaborating;
+
 /* Afro-futurist / vibrant African portraits (the "anime" / stylised energy) */
 export const portraitConfident = img('photo-1573496359142-b8d87734a5a2', 800, 1000);
 export const portraitBusiness = img('photo-1573497019940-1c28c88b4f3e', 800, 1000);

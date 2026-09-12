@@ -27,7 +27,7 @@ export default function Navbar() {
       <nav className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 font-bold text-lg shrink-0">
-          <Image src="/logo-icon.svg" alt="Elimu Africa" width={32} height={32} className="h-8 w-8" />
+          <Image src="/logo-icon.svg" alt="" aria-hidden width={32} height={32} className="h-8 w-8" />
           <span className="text-stone-900 hidden sm:inline">Elimu <span className="text-[#1a6b3c]">Africa</span></span>
         </Link>
 
