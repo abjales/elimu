@@ -16,6 +16,9 @@ import Image from 'next/image';
 const navLinks = [
   { label: 'Courses', href: '/courses' },
   { label: 'Pricing', href: '/pricing' },
+  { label: 'About', href: '/about' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 export default function Navbar() {

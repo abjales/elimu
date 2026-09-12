@@ -3,13 +3,14 @@ import Image from 'next/image';
 
 const footerLinks = {
   Company: [
-    { label: 'About', href: '#' },
-    { label: 'Careers', href: '#' },
-    { label: 'Blog', href: '#' },
+    { label: 'About', href: '/about' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Courses', href: '/courses' },
   ],
   Support: [
-    { label: 'Help Center', href: '#' },
-    { label: 'Contact Us', href: '#' },
+    { label: 'Contact Us', href: '/contact' },
+    { label: 'Email', href: 'mailto:elimuafrica9@gmail.com' },
+    { label: 'Call', href: 'tel:+254799867572' },
   ],
   'Legal': [
     { label: 'Terms', href: '#' },
